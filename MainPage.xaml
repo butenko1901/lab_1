@@ -1,0 +1,55 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="MyExcelMAUIApp.MainPage"
+             Title="Електронна таблиця"
+             BackgroundColor="#FAF5F6">
+
+    <ContentPage.Resources>
+        <Style TargetType="Button">
+            <Setter Property="BackgroundColor" Value="#F2DCE2" />
+            <Setter Property="TextColor" Value="#4A3B40" />
+            <Setter Property="BorderColor" Value="#DDBCC6" />
+            <Setter Property="BorderWidth" Value="1" />
+            <Setter Property="CornerRadius" Value="3" />
+            <Setter Property="FontSize" Value="13" />
+            <Setter Property="FontAttributes" Value="None" />
+            <Setter Property="Padding" Value="12,0" />
+            <Setter Property="HeightRequest" Value="34" />
+        </Style>
+        <Style TargetType="Entry">
+            <Setter Property="FontSize" Value="13" />
+            <Setter Property="TextColor" Value="#4A3B40" />
+            <Setter Property="BackgroundColor" Value="White" />
+        </Style>
+    </ContentPage.Resources>
+
+    <Grid RowDefinitions="Auto,Auto,Auto,*" Padding="6" RowSpacing="4">
+
+        <ScrollView Grid.Row="0" Orientation="Horizontal">
+            <HorizontalStackLayout Spacing="4">
+                <Button Text="Зберегти" Clicked="SaveButton_Clicked" />
+                <Button Text="Прочитати" Clicked="ReadButton_Clicked" />
+                <Button Text="Вийти" Clicked="ExitButton_Clicked" />
+                <Button Text="Порахувати" Clicked="CalculateButton_Clicked" />
+                <Button x:Name="modeButton" Text="Режим: ВИРАЗ" Clicked="ModeButton_Clicked" />
+                <Button Text="Довідка" Clicked="HelpButton_Clicked" />
+                <Button Text="Видалити рядок" Clicked="DeleteRowButton_Clicked" />
+                <Button Text="Видалити стовпчик" Clicked="DeleteColumnButton_Clicked" />
+                <Button Text="Додати рядок" Clicked="AddRowButton_Clicked" />
+                <Button Text="Додати стовпчик" Clicked="AddColumnButton_Clicked" />
+            </HorizontalStackLayout>
+        </ScrollView>
+
+        <Entry x:Name="textInput" Grid.Row="1"
+               Placeholder="Рядок формул: виберіть клітинку, введіть вираз і натисніть Enter"
+               PlaceholderColor="#A99AA0"
+               Completed="TextInput_Completed" />
+
+        <Label x:Name="statusLabel" Grid.Row="2" FontSize="13" TextColor="#6E6168" Text="" />
+
+        <ScrollView Grid.Row="3" Orientation="Both">
+            <Grid x:Name="grid" />
+        </ScrollView>
+    </Grid>
+</ContentPage>
